@@ -1,0 +1,130 @@
+/* declare variables to be used  */
+:root{
+    --left-bg-color:rgba(110, 121, 121, 0.1);
+    --right-bg-color:rgba(240, 240, 240, 0.1);
+    --left-btn-hover-color:rgba(11, 12, 12, 0.9);
+    --right-btn-hover-color:rgba(245, 218, 71, 0.9);
+    --hover-width: 75%;
+    --other-width: 25%;
+    --speed: 1000ms;
+}
+
+body{
+    margin: 0;
+}
+h1{
+    font-size: 4rem;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    transform: translateX(-50%);
+    white-space: nowrap;  
+}
+
+.btn{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 50%;
+    top: 60%;
+    transform: translateX(-50%);
+    text-decoration: none;
+    color: rgba(33, 193, 199, 0.856);
+    border: rgb(71, 71, 71) solid 0.2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 10rem;
+    padding: 1.5rem;
+}
+/* hover effects on the left button*/
+.split.left .btn:hover {
+    background-color: var( --left-btn-hover-color);
+    border-color: var( --left-btn-hover-color);
+}
+/* hover effects on the right button */
+.split.right .btn:hover {
+    background-color: var(--right-btn-hover-color);
+    border-color: var(--right-btn-hover-color);
+}
+.container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+/* split the container into half */
+.split{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+}
+/* set the left side to cover the left side */
+.split.left{
+    left: 0;
+    background: url('/pexels-rahul-695644.jpg');
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height:100vh; 
+}
+.split.left::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--left-bg-color);
+}
+/* set the right side to cover the right side */
+.split.right{
+    right: 0;
+    background: url('/pexels-madison-inouye-2894957.jpg');
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height:100vh; 
+}
+.split.right::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--right-bg-color);
+}
+/* sets the left side to cover 75% of the screen */
+.hover-left .left{
+    width: var(--hover-width);
+}
+/* sets the right side to cover 25% of the screen */
+.hover-left .right{
+    width: var(--other-width);
+}
+/* sets the right side to cover 75% of the screen */
+.hover-right .right{
+    width: var(--hover-width);
+}
+/* sets the left side to cover 25% of the screen */
+.hover-right .left{
+    width: var(--other-width);
+}
+/* smoothens the hover events */
+.split.right,
+.split.left,
+.split.right::before,
+.split.left::before{
+    transition: all var(--speed) ease-in-out;
+}
+/* changes the settings for devices with a width of less than 500px */
+@media(max-width: 500px){
+    h1{
+        font-size: 2rem;
+        top: 20%;
+    }
+    .btn{
+        padding: 1.2rem;
+        width: 4rem;
+    }
+}
